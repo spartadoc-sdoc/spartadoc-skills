@@ -18,13 +18,19 @@ the standalone [sdoc skill](https://github.com/spartadoc-sdoc/sdoc/blob/main/ski
 
 ## Prerequisites
 
+Just an account and a key — the skill talks to the Spartadoc **REST API**
+directly (no CLI, no install):
+
 1. A **Spartadoc account** ([spartadoc.com](https://spartadoc.com)).
-2. An **API key** from that account.
-3. The CLI: `npm install -g @spartadoc/cli` (command: `spartadoc`).
+2. An **API key** from that account (created under *Account → API keys*).
 
 ```bash
-export SPARTADOC_API_KEY="sk_..."   # from your Spartadoc account
+export SPARTADOC_API_KEY="sdoc_..."            # from your Spartadoc account
+export SPARTADOC_BASE="https://spartadoc.com"  # or a tenant subdomain
 ```
+
+Requests authenticate with the `X-API-Key` header. The full endpoint list is in
+the platform's OpenAPI spec: `$SPARTADOC_BASE/openapi.json`.
 
 ## Using a skill
 
