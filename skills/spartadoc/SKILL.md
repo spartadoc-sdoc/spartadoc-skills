@@ -60,7 +60,13 @@ curl "${AUTH[@]}" "$SPARTADOC_BASE/api/documents"
 # Request documents from a person (magic-link; upload lands as PENDING)
 curl "${AUTH[@]}" -X POST "$SPARTADOC_BASE/api/document-requests" \
   -H "Content-Type: application/json" \
-  -d '{ "borrowerEmail": "client@example.com", "docTypes": ["NOTICE_OF_ASSESSMENT"] }'
+  -d '{
+    "recipients": ["client@example.com"],
+    "items": [{ "label": "Avis de cotisation 2025", "docType": "NOTICE_OF_ASSESSMENT" }],
+    "message": "Merci de déposer ce document via le lien sécurisé."
+  }'
+# List existing requests
+curl "${AUTH[@]}" "$SPARTADOC_BASE/api/document-requests"
 
 # Shares (share a dossier/document, then revoke)
 curl "${AUTH[@]}" "$SPARTADOC_BASE/api/shares"
